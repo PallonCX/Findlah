@@ -75,7 +75,7 @@
 
             findBy: function(callback) {
                 return this.markers.find(callback);
-            }
+            },
 
             removeBy: function(callback) {
                 this.markers.find(callback, function(markers) {
@@ -83,7 +83,7 @@
                          marker.setMap(null);
                      });
                 });
-            }
+            },
 
             _createMarker: function(opts) {
                 opts.map = this.gMap;
@@ -95,7 +95,7 @@
 
     }());
 
-    Mapster.create = function(element, ops) {
+    Mapster.create = function(element, opts) {
         return new Mapster(element, opts);
     };
 
