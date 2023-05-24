@@ -17,40 +17,41 @@
             },
 
             geocode: function(opts) {
+                var geocoder = new google.maps.Geocoder(); // Declare geocoder variable
                 geocoder.geocode({
                     address: opts.address
                 }, function(results, status){
                     if(status === google.maps.GeocoderStatus.OK) {
                         opts.success.call(this, results, status);
-                     } else {
+                    } else {
                         opts.error.call(this, status);
                     }
                 });
             },
 
             addMarkerByLocation: function(opts) {
-                 var self = this;
-                 this.map.geocode({
-                     address: opts.location,
-                     success: function(results) {
-                         results.forEach(function(result) {
-                             opts.lat = result.geometry.location.lat();
-                             opts.lng = result.geometry.location.lng();
-                              self.map.addMarker(opts);
-                         });
-                     },
-                     error: function(status) {
-                         console.error(status)
-                     }
-                 });
-             },
+                var self = this;
+                this.geocode({ // Change this.map to this.geocode
+                    address: opts.location,
+                    success: function(results) {
+                        results.forEach(function(result) {
+                            opts.lat = result.geometry.location.lat();
+                            opts.lng = result.geometry.location.lng();
+                            self.addMarker(opts); // Change this.map.addMarker to self.addMarker
+                        });
+                    },
+                    error: function(status) {
+                        console.error(status);
+                    }
+                });
+            },
 
             addMarker: function(opts) {
                 var marker;
                 opts.position = {
                     lat: opts.lat,
                     lng: opts.lng
-                }
+                };
                 marker = this._createMarker(opts);
                 this.markers.add(marker);
                 if(opts.event) {
@@ -68,7 +69,7 @@
                             var infoWindow = new google.maps.InfoWindow({content: opts.content});
                             infoWindow.open(this.gMap, marker);
                         }
-                    })
+                    });
                 }
                 return marker;              
             },
@@ -80,8 +81,8 @@
             removeBy: function(callback) {
                 this.markers.find(callback, function(markers) {
                     markers.forEach(function(marker) {
-                         marker.setMap(null);
-                     });
+                        marker.setMap(null);
+                    });
                 });
             },
 
@@ -89,11 +90,11 @@
                 opts.map = this.gMap;
                 return new google.maps.Marker(opts);
             }
-        }
+        };
 
         return Mapster;
 
-    }());
+    })();
 
     Mapster.create = function(element, opts) {
         return new Mapster(element, opts);
@@ -101,4 +102,4 @@
 
     window.Mapster = Mapster;
 
-}(window, google, List))
+}(window, google, List));
