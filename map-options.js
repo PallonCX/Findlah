@@ -5,6 +5,7 @@
             lat: 0,
             lng: 0
         },
+        zoom = 10,
         geocoder = true;
     }
 
