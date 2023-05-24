@@ -1,12 +1,12 @@
-(function(window, google, mapster){
+(function(window, google, mapster) {
     
     mapster.MAP_OPTIONS = {
         center: {
             lat: 0,
             lng: 0
         },
-        zoom = 10,
-        geocoder = true
-    }
+        zoom: 10,
+        geocoder: true
+    };
 
-}(window, google, window.Mapster || (window.Mapster = {})))
+}(window, google, window.Mapster || (window.Mapster = {})));
