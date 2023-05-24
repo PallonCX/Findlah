@@ -4,7 +4,7 @@
         center: {
             lat: 0,
             lng: 0
-        }
+        },
         geocoder = true;
     }
 
