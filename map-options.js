@@ -6,7 +6,7 @@
             lng: 0
         },
         zoom = 10,
-        geocoder = true;
+        geocoder = true
     }
 
 }(window, google, window.Mapster || (window.Mapster = {})))
