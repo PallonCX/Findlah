@@ -2,10 +2,10 @@
     
     mapster.MAP_OPTIONS = {
         center: {
-            lat: 33.0,
-            lng: 33.0
+            lat: 1.290270,
+            lng: 103.851959
         },
-        zoom: 8,
+        zoom: 12,
 //         geocoder: true
     };
 
