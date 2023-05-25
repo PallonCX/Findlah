@@ -1,4 +1,4 @@
-import mapster from "Mapster.js";
+import mapster from "/Mapster.js";
 
 let map;
     
