@@ -1,11 +1,22 @@
 (function(window, mapster) {
+    let map;
+    
+    function initMap() {
+        map = new google.maps.Map(document.getElementById("map-canvas"), {
+            center: {
+                lat: 0.0,
+                lng: 0.0
+            },
+            zoom: 8,
+        }); 
+    }
+   
+//     // map options
+//     var options = mapster.MAP_OPTIONS;
+//     var element = document.getElementById("map-canvas");
 
-    // map options
-    var options = mapster.MAP_OPTIONS;
-    var element = document.getElementById("map-canvas");
-
-    // map
-    var map = mapster.create(element, options);
+//     // map
+//     var map = mapster.create(element, options);
 
 //     var geocoder = new google.maps.Geocoder();
 
