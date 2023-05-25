@@ -16,20 +16,36 @@ function initMap() {
 }
 
 async function fetching() {
-    const resp = await fetch('./shopLists.json');
+    const resp = await fetch('./data.json');
     const json = await resp.json();
-    // console.log(json);
     Object.keys(json).forEach(k => {
-        console.log(codeAddress(json[k]["address"]))
+        var p = "<h2><center>" + k + "</center></h2>";
+        var a = "<h2><center>" + json[k]["address"] + "</center></h2>";
+        var s = "";
+        for(var i in json[k]["shops"]) {
+            s += "<p><center>" + json[k]["shops"][i] + "</center></p>";
+        }
+        var content = p + "<hr>" + a + "<hr>" + s;
+        console.log(codeAddress(json[k]["address"], content));
     })
 } 
 
-function codeAddress(address) {
+function codeAddress(address, content) {
     geocoder.geocode( {"address": address}, function(results, status) {
       if (status == 'OK') {
+        var infowindow = new google.maps.InfoWindow({
+            content: content,
+            ariaLabel: "Uluru",
+        });
         var marker = new google.maps.Marker({
             map: map,
             position: results[0].geometry.location
+        });
+        marker.addListener("click", () => {
+            infowindow.open({
+            anchor: marker,
+            map,
+            });
         });
         console.log("OK");
       } else {
