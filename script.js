@@ -1,5 +1,3 @@
-(function(window) {
-
 let map;
     
 function initMap() {
@@ -12,7 +10,6 @@ function initMap() {
     }); 
 }
     
-})(window);
 
 // (function(window, mapster) {
 //     let map;
