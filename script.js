@@ -16,7 +16,7 @@ function initMap() {
 }
 
 async function fetching() {
-    const resp = await fetch('./data.json');
+    const resp = await fetch('./shopLists.json');
     const json = await resp.json();
     // console.log(json);
     Object.keys(json).forEach(k => {
