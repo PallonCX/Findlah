@@ -1,15 +1,27 @@
-(function(window, mapster) {
-    let map;
+let map;
     
-    function initMap() {
-        map = new google.maps.Map(document.getElementById("map"), {
-            center: {
-                lat: 33.0,
-                lng: 33.0
-            },
-            zoom: 8,
-        }); 
-    }
+function initMap() {
+    map = new google.maps.Map(document.getElementById("map"), {
+        center: {
+            lat: 33.0,
+            lng: 33.0
+        },
+        zoom: 8,
+    }); 
+}
+
+// (function(window, mapster) {
+//     let map;
+    
+//     function initMap() {
+//         map = new google.maps.Map(document.getElementById("map"), {
+//             center: {
+//                 lat: 33.0,
+//                 lng: 33.0
+//             },
+//             zoom: 8,
+//         }); 
+//     }
    
 //     // map options
 //     var options = mapster.MAP_OPTIONS;
@@ -46,4 +58,4 @@
 //         }
 //     }, geocoder);
 
-})(window, window.Mapster || (window.Mapster = {}));
+// })(window, window.Mapster || (window.Mapster = {}));
