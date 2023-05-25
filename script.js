@@ -34,20 +34,20 @@ async function fetching() {
 function codeAddress(address, content) {
     geocoder.geocode( {"address": address}, function(results, status) {
       if (status == 'OK') {
-        var infowindow = new google.maps.InfoWindow({
-            content: content,
-            ariaLabel: "Uluru",
-        });
+//         var infowindow = new google.maps.InfoWindow({
+//             content: content,
+//             ariaLabel: "Uluru",
+//         });
         var marker = new google.maps.Marker({
             map: map,
             position: results[0].geometry.location
         });
-        marker.addListener("click", () => {
-            infowindow.open({
-            anchor: marker,
-            map,
-            });
-        });
+//         marker.addListener("click", () => {
+//             infowindow.open({
+//             anchor: marker,
+//             map,
+//             });
+//         });
         console.log("OK");
       } else {
         console.log('Geocode was not successful for the following reason: ' + status);
