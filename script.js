@@ -1,64 +1,40 @@
-import * as mapster from "/Mapster.js";
+var map;
+var geocoder;
+var data;
 
-let map;
-    
 function initMap() {
-    map = new google.maps.Map(document.getElementById("map"), {
+    geocoder = new google.maps.Geocoder();
+    var mapOption = {
         center: {
             lat: 1.290270,
             lng: 103.851959
         },
         zoom: 12,
-    }); 
+    };
+    map = new google.maps.Map(document.getElementById("map"), mapOption); 
+    fetching();
 }
-    
 
-// (function(window, mapster) {
-//     let map;
-    
-//     function initMap() {
-//         map = new google.maps.Map(document.getElementById("map"), {
-//             center: {
-//                 lat: 33.0,
-//                 lng: 33.0
-//             },
-//             zoom: 8,
-//         }); 
-//     }
-   
-//     // map options
-//     var options = mapster.MAP_OPTIONS;
-//     var element = document.getElementById("map-canvas");
+async function fetching() {
+    const resp = await fetch('./data.json');
+    const json = await resp.json();
+    // console.log(json);
+    Object.keys(json).forEach(k => {
+        console.log(codeAddress(json[k]["address"]))
+    })
+} 
 
-//     // map
-//     var map = mapster.create(element, options);
+function codeAddress(address) {
+    geocoder.geocode( {"address": address}, function(results, status) {
+      if (status == 'OK') {
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+        console.log("OK");
+      } else {
+        console.log('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+}
 
-//     var geocoder = new google.maps.Geocoder();
-
-//     function geocode(opts, geocoder) {
-//         geocoder.geocode({
-//             address: opts.address
-//         }, function(results, status) {
-//             if (status === google.maps.GeocoderStatus.OK) {
-//                 opts.success.call(this, results, status);
-//             } else {
-//                 opts.error.call(this, status);
-//             }
-//         });
-//     }
-
-//     geocode({
-//         address: "",
-//         success: function(results) {
-//             var result = results[0];
-//             map.addMarker({
-//                 lat: result.geometry.location.lat(),
-//                 lng: result.geometry.location.lng()
-//             });
-//         },
-//         error: function(status) {
-//             console.error(status);
-//         }
-//     }, geocoder);
-
-// })(window, window.Mapster || (window.Mapster = {}));
