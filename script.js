@@ -1,3 +1,5 @@
+(function(window) {
+
 let map;
     
 function initMap() {
@@ -9,6 +11,8 @@ function initMap() {
         zoom: 12,
     }); 
 }
+    
+})(window);
 
 // (function(window, mapster) {
 //     let map;
