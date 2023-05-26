@@ -1,6 +1,7 @@
 var map;
 var geocoder;
 var data;
+var prevInfoWindow = null;
 
 function initMap() {
     geocoder = new google.maps.Geocoder();
@@ -44,9 +45,14 @@ function codeAddress(address, content) {
         });
         marker.addListener("click", () => {
             infowindow.open({
-            anchor: marker,
-            map,
-            });
+                anchor: marker,
+                map,
+            });   
+            if(prevInfoWindow) {
+                prevInfoWindow.close();
+            }
+            prevInfoWindow = infowindow;
+             
         });
         console.log("OK");
       } else {
@@ -54,4 +60,3 @@ function codeAddress(address, content) {
       }
     });
 }
-
