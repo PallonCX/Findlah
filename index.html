@@ -12,11 +12,16 @@
 
 <body>
     <div id="findButton">
+      <button id="prev" class="button"></button>
       <button type="button" id="find" class="button"></button>
+      <button type="button" id="nearby" class="button"></button>
+      <button id="next" class="button"></button>
     </div>
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
     <div id="map"></div>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7riTQlaZ38YOeaNEMk-2hx22kp387e5U&callback=initMap&v=weekly" defer></script>
     <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>    
+    <script type="module" src="pq.js"></script>
+    <script type="module" src="data.js"></script>
 </body>
 </html>
